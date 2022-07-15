@@ -1,10 +1,6 @@
-<div class="wrapper">
-    <ul>
-        <li>
-            <h1>Todo App</h1>
-        </li>
-        <li>
-            <a href="logout.php" class="logout"><i class="fas fa-sign-out-alt" style="color: #C78743;"></i> Afmelden</a>
-        </li>
-    </ul>
+<link rel="stylesheet" href="css/navigation.css?v=<?php echo time(); ?>">
+
+<div class="container">
+    <h1>TODO APP</h1>
+    <a href="logout.php" class="logout">Afmelden</a>
 </div>

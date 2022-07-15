@@ -11,6 +11,12 @@
 <body>
     <?php include_once("nav.inc.php"); ?>
 
-    
+    <a href="add_list.php">Add new list</a>
+
+    <ul>
+        <li>College</li>
+        <li>Home</li>
+    </ul>
+
 </body>
 </html>

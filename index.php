@@ -10,6 +10,7 @@
 </head>
 <body>
     <?php include_once("nav.inc.php"); ?>
-    <p>Ingelogd!</p>
+
+    
 </body>
 </html>

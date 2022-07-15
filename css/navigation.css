@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+
+* {
+    list-style: none;
+	text-decoration: none;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+}
+
+h1 {
+    align-self: center;
+    font-family: 'Oswald', sans-serif;
+    color: darkblue;
+}
+
+a .logout {
+    align-self: center;
+    color: darkblue;
+}

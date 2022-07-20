@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.3.0-dev+20220704.94206e9963
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 05 jul 2022 om 18:04
+-- Gegenereerd op: 20 jul 2022 om 13:59
 -- Serverversie: 10.4.24-MariaDB
--- PHP-versie: 8.1.5
+-- PHP-versie: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,28 @@ SET time_zone = "+00:00";
 --
 -- Database: `tododb`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `lijst`
+--
+
+CREATE TABLE `lijst` (
+  `id` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `title` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(300) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `lijst`
+--
+
+INSERT INTO `lijst` (`id`, `userId`, `title`, `description`) VALUES
+(1, 1, 'ghnbg', 'dfb'),
+(2, 1, 'nhgfcbv', 'ghfb'),
+(3, 1, 'sdxc', 'fdvxc');
 
 -- --------------------------------------------------------
 
@@ -45,6 +67,12 @@ INSERT INTO `users` (`id`, `username`, `password`) VALUES
 --
 
 --
+-- Indexen voor tabel `lijst`
+--
+ALTER TABLE `lijst`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexen voor tabel `users`
 --
 ALTER TABLE `users`
@@ -55,15 +83,19 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT voor een tabel `lijst`
+--
+ALTER TABLE `lijst`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT voor een tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
 

@@ -25,7 +25,7 @@
             return $this->username;
         }
 
-        // username check
+        // check if username is filled in
         public function checkUsername($username) {
             if($username === "") {
                 throw new Exception("Voer een geldige username in.");
@@ -48,7 +48,7 @@
             return $this->password;
         }
 
-        // password check
+        // check if password is filled in
         private function checkPassword($password){
             if($password === "") {
                 throw new Exception("Voer een geldig wachtwoord in.");
@@ -94,13 +94,13 @@
             }
         }
 
-                // get the user id based on the username
-                public static function getUserIdByUsername($username) {
-                    $conn = Db::getInstance();
-                    $statement = $conn->prepare("select id from users where username = :username");
-                    $statement->bindValue(":username", $username);
-                    $statement->execute();
-                    $result = $statement->fetch();
-                    return $result['id'];
-                }
+        // get the user id based on the username
+        public static function getUserByUsername($username) {
+            $conn = Db::getInstance();
+            $statement = $conn->prepare("select id from users where username = :username");
+            $statement->bindValue(":username", $username);
+            $statement->execute();
+            $result = $statement->fetch();
+            return $result['id'];
+            }
     }

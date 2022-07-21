@@ -17,8 +17,11 @@
     <?php include_once("nav.inc.php"); ?>
 
     <div class="content">
+        <div class="card">
             <div class="back">
-                <a href="index.php" class="back"></i></a>
+                <a href="forum.php" class="back"><i class="fas fa-arrow-left" style="color: #C78743;"></i></a>
+
+                    <a href="delete_lijst.php?lijst=<?php echo $_GET["lijst"]; ?>" class="delete"><i>Verwijderen</i></a>
             </div>
 
             <br>

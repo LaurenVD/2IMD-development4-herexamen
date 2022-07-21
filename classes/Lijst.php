@@ -86,4 +86,12 @@
             return $statement->fetch(PDO::FETCH_ASSOC);
         }
 
+        // delete a list
+        public static function deleteLijst($lijstId) {
+            $conn = Db::getInstance();
+            $statement = $conn->prepare("delete from lijst where id = :lijstId");
+            $statement->bindValue(":lijstId", $lijstId);
+            $statement->execute();
+        }
+
     }

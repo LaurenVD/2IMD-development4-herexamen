@@ -28,16 +28,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buurtstem - Topic toevoegen</title>
+    <title>Add list</title>
     <link rel="stylesheet" href="css/add_lijst.css?v=<?php echo time(); ?>">
 </head>
 <body>
-    <?php include_once("nav.inc.php"); ?>
-    
-    <div class="content">
-        <div class="back">
-            <a href="forum.php" class="back"><i class="fas fa-arrow-left" style="color: #C78743;"></i></a>
-        </div>
+   <?php include_once("nav.inc.php"); ?>
 
         <br>
 

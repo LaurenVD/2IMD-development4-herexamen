@@ -103,4 +103,13 @@
             $result = $statement->fetch();
             return $result['id'];
             }
+
+            // get a user by id
+        public static function getUserById($id) {
+            $conn = Db::getInstance();
+            $statement = $conn->prepare("select * from users where id = :userId");
+            $statement->bindValue(':userId', $id);
+            $statement->execute();
+            return $statement->fetch();
+        }
     }

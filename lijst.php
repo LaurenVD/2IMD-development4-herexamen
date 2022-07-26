@@ -23,6 +23,8 @@
         <p><?php echo htmlspecialchars($lijst['description']); ?></p>
     </div>
 
+    <a href="delete_lijst.php?lijst=<?php echo $_GET["lijst"]; ?>" class="delete">Delete list</a>
+
     <div class="content">
         <h2>Todo's</h2>
 
@@ -30,7 +32,7 @@
 
         <!-- todo toevoegen -->
         <div class="topic">
-            <a href="add_task.php" class="add">Add a new todo!<i class="fas fa-plus" style="color: #C78743;"></i></a>
+            <a href="add_task.php" class="add">Add a new task!</a>
         </div>
 
         <!-- tabel -->

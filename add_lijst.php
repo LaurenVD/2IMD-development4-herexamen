@@ -4,16 +4,16 @@
 
     if(!empty($_POST)) {
         try {
-            $topic = new Lijst();
+            $lijst = new Lijst();
             if(isset($_SESSION['userId'])) {
-                $topic->setUserId($_SESSION['userId']);
+                $lijst->setUserId($_SESSION['userId']);
             }
             else {
-                $topic->setUserId(1);
+                $lijst->setUserId(1);
             }
-            $topic->setTitle($_POST["title"]);
-            $topic->setDescription($_POST["description"]);
-            $topic->add();
+            $lijst->setTitle($_POST["title"]);
+            $lijst->setDescription($_POST["description"]);
+            $lijst->add();
 
             header("Location: index.php");
         }

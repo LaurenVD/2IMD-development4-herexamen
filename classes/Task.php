@@ -85,9 +85,10 @@
         }
 
         // get all task information
-        public static function getAll() {
+        public static function getAll($lijstId) {
             $conn = Db::getInstance();
-            $statement = $conn->prepare("select * from task");
+            $statement = $conn->prepare("select * from task where lijstId = :lijstId");
+            $statement->bindValue(':lijstId', $lijstId);
             $statement->execute();
             return $statement->fetchAll(PDO::FETCH_ASSOC);
         }
@@ -104,8 +105,8 @@
         // delete user task (future)
         public static function deleteTask($taskId) {
             $conn = Db::getInstance();
-            $statement = $conn->prepare("delete from task where id = :topicId");
-            $statement->bindValue(":topicId", $taskId);
+            $statement = $conn->prepare("delete from task where id = :taskId");
+            $statement->bindValue(":taskId", $taskId);
             $statement->execute();
         }
     }

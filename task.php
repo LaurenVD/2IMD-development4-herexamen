@@ -22,6 +22,8 @@
         <h2><?php echo htmlspecialchars($task['title']); ?></h2>
     </div>
 
+    <a href="delete_task.php?task=<?php echo $_GET["task"]; ?>" class="delete">Delete task</a>
+
     <div class="commentSection">
                 <div class="commentForm">
                     <input type="text" id="commentText" placeholder=" Laat een reactie achter">

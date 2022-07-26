@@ -38,7 +38,7 @@
         // title can't be empty
         public function checkTitle($title) {
             if(empty($title)) {
-                throw new Exception("Voer een geldige titel in.");
+                throw new Exception("Insert a title.");
             }
         }
 
@@ -55,7 +55,7 @@
         // description can't be empty
         public function checkDescription($description) {
             if(empty($description)) {
-                throw new Exception("Voer een geldige omschrijving in.");
+                throw new Exception("Insert a description.");
             }
         }
         

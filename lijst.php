@@ -2,8 +2,7 @@
     include_once('logged_in.inc.php');
     include_once('core/autoload.php');
 
-    $lijstId = $_GET['lijst'];
-    $lijst = Lijst::getLijstById($lijstId);
+    $tasks = Task::getAll();
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -11,33 +10,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TODO - Lijst</title>
+    <title>TODO</title>
 </head>
 <body>
     <?php include_once("nav.inc.php"); ?>
 
     <div class="content">
-        <div class="card">
-            <div class="back">
-                <a href="forum.php" class="back"><i class="fas fa-arrow-left" style="color: #C78743;"></i></a>
+        <h2>Todo's</h2>
 
-                    <a href="delete_lijst.php?lijst=<?php echo $_GET["lijst"]; ?>" class="delete"><i>Verwijderen</i></a>
-            </div>
+        <br>
 
-            <br>
-
-            <div class="header">
-                <h2><?php echo htmlspecialchars($lijst['title']); ?></h2>
-            </div>
-            
-            <br>
-            <p><?php echo htmlspecialchars($lijst['description']); ?></p>
-            <br>
-
-            <div class="tasks">
-                <a href="//">Add a todo</a>
-            </div>
+        <!-- topic toevoegen -->
+        <div class="topic">
+            <a href="add_task.php" class="add">Add a new todo!<i class="fas fa-plus" style="color: #C78743;"></i></a>
         </div>
+
+        <!-- tabel -->
+        <table class="table">
+
+            <?php if(!empty($tasks)): ?>
+                <?php foreach($tasks as $task): ?>
+                    <tbody>
+                        <tr>
+                            <td style="text-decoration: underline"><a href="topic.php?topic=<?php echo $task["id"]; ?>" class="btn btn-info"><?php echo htmlspecialchars($task['title']); ?></a></td>
+                            <td><?php echo htmlspecialchars($task['date']); ?></td>
+                            <td><?php echo htmlspecialchars($task['hour']); ?></td>
+                        </tr>
+                    </tbody>
+                <?php endforeach; ?>
+            <?php endif; ?>
+
+            <?php if(empty($tasks)): ?>
+                <tbody>
+                    <tr>
+                        <td>N.v.t.</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>Y-m-d</td>
+                    </tr>
+                </tbody>
+            <?php endif; ?>
+        </table>
     </div>
 </body>
 </html>

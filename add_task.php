@@ -2,6 +2,27 @@
     include_once('logged_in.inc.php');
     include_once('core/autoload.php');
 
+    if(!empty($_POST)) {
+        try {
+            $task = new Task();
+            if(isset($_SESSION['userId'])) {
+                $task->setUserId($_SESSION['userId']);
+            }
+            else {
+                $task->setUserId(1);
+            }
+            $task->setTitle($_POST["title"]);
+            $task->setDate(date("Y-m-d"));
+            $task->setHour($_POST["hour"]);
+            $task->add();
+
+            header("Location: lijst.php");
+        }
+        catch(Throwable $error) {
+            $error = $error->getMessage();
+        }
+    }
+
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,11 +51,11 @@
          <?php endif; ?>
 
         <div class="form__field">
-            <input type="text" id="titel" name="title" placeholder="Title">
+            <input type="text" id="title" name="title" placeholder="Title">
         </div>
 
      <div class="form__field">
-            <input type="time" id="hour" name="hour">
+            <input type="number" id="hour" name="hour">
         </div>
 
         <div class="form__field">
@@ -42,7 +63,7 @@
         </div>
 
         <div class="form__field">
-            <input type="submit" name="toevoegen" value="Add list" class="btn-toevoegen">
+            <input type="submit" name="toevoegen" value="Add task" class="btn-toevoegen">
 
             <a href="index.php" class="annuleren">Cancel</a>
         </div>

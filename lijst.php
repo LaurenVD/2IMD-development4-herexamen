@@ -2,7 +2,10 @@
     include_once('logged_in.inc.php');
     include_once('core/autoload.php');
 
-    $tasks = Task::getAll();
+    $lijstId = $_GET['lijst'];
+    $lijst = Lijst::getLijstById($lijstId);
+
+    $tasks = Task::getAll($lijstId);
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -15,12 +18,17 @@
 <body>
     <?php include_once("nav.inc.php"); ?>
 
+    <div class="header">
+        <h2><?php echo htmlspecialchars($lijst['title']); ?></h2>
+        <p><?php echo htmlspecialchars($lijst['description']); ?></p>
+    </div>
+
     <div class="content">
         <h2>Todo's</h2>
 
         <br>
 
-        <!-- topic toevoegen -->
+        <!-- todo toevoegen -->
         <div class="topic">
             <a href="add_task.php" class="add">Add a new todo!<i class="fas fa-plus" style="color: #C78743;"></i></a>
         </div>
@@ -32,7 +40,7 @@
                 <?php foreach($tasks as $task): ?>
                     <tbody>
                         <tr>
-                            <td style="text-decoration: underline"><a href="topic.php?topic=<?php echo $task["id"]; ?>" class="btn btn-info"><?php echo htmlspecialchars($task['title']); ?></a></td>
+                            <td style="text-decoration: underline"><a href="task.php?task=<?php echo $task["id"]; ?>" class="btn btn-info"><?php echo htmlspecialchars($task['title']); ?></a></td>
                             <td><?php echo htmlspecialchars($task['date']); ?></td>
                             <td><?php echo htmlspecialchars($task['hour']); ?></td>
                         </tr>
@@ -41,14 +49,7 @@
             <?php endif; ?>
 
             <?php if(empty($tasks)): ?>
-                <tbody>
-                    <tr>
-                        <td>N.v.t.</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>Y-m-d</td>
-                    </tr>
-                </tbody>
+                <p>No tasks found</p>
             <?php endif; ?>
         </table>
     </div>

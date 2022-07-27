@@ -43,8 +43,7 @@
                     <tbody>
                         <tr>
                             <td style="text-decoration: underline"><a href="task.php?task=<?php echo $task["id"]; ?>" class="btn btn-info"><?php echo htmlspecialchars($task['title']); ?></a></td>
-                            <td><?php echo htmlspecialchars($task['date']); ?></td>
-                            <td><?php echo htmlspecialchars($task['hour']); ?></td>
+                            <td><p><?php echo htmlspecialchars($task['date']); ?></p></td>
                         </tr>
                     </tbody>
                 <?php endforeach; ?>

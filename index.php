@@ -1,8 +1,12 @@
-<?php
-    include_once('logged_in.inc.php');
-    include_once('core/autoload.php');
+<?php include_once('logged_in.inc.php');?>
+<?php include_once('core/autoload.php');?>
 
-    $lijsten = Lijst::getAll();
+<?php 
+
+    $userId = $_SESSION["userId"];
+    $user = User::getUserById($userId);
+
+    $lijsten = Lijst::getAllForUser($userId);
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -10,7 +14,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TODO APP</title>
+    <title>TODO APP<?php echo $user["id"]; ?></title>
     <link rel="stylesheet" href="css/index.css?v=<?php echo time(); ?>">
 </head>
 <body>
@@ -18,8 +22,6 @@
 
     <div class="content">
         <h2>Your to-do's</h2>
-
-        <br>
 
         <!-- lijst toevoegen -->
         <div class="topic">
@@ -37,8 +39,7 @@
                 <?php foreach($lijsten as $lijst): ?>
                     <tbody>
                         <tr>
-                            <td style="text-decoration: underline"><a href="lijst.php?lijst=<?php echo $lijst["id"]; ?>"><?php echo htmlspecialchars($lijst['title']); ?></a></td>
-                            <td><p <?php echo htmlspecialchars($lijst['description']); ?>></p></td>
+                            <td style="text-decoration: underline"><a href="lijst.php?lijst=<?php echo $lijst["id"]; ?>" class="btn btn-info"><?php echo htmlspecialchars($lijst['title']); ?></a></td>
                         </tr>
                     </tbody>
                 <?php endforeach; ?>

@@ -20,27 +20,26 @@
 
     <div class="header">
         <h2><?php echo htmlspecialchars($task['title']); ?></h2>
+        <p><?php echo htmlspecialchars($task['date']); ?></p>
+        <p><?php echo htmlspecialchars($task['hour']); ?></p>
     </div>
 
     <a href="delete_task.php?task=<?php echo $_GET["task"]; ?>" class="delete">Delete task</a>
 
     <div class="commentSection">
-                <div class="commentForm">
+                <div id="commentForm">
                     <input type="text" id="commentText" placeholder=" Laat een reactie achter">
-                    <a href="#" class="submitComment" data-taskid="<?php echo $task['id'] ?>"> Submit comment</a>
+                    <a href="#" id="submitComment" data-taskid="<?php echo $task['id'] ?>">Submit comment</a>
                 </div>
 
                 <br>
 
-                <ul class="CommentList">
+                <ul id="commentList">
                     <?php foreach($comments as $comment): ?>
                         <?php $commentUser = User::getUserById($comment['userId']) ?>
                             <li>
-                                <div>
                                     <h4 class="detailsText"><?php echo $commentUser['username'] ?> reacted:</h4>
                                     <p><?php echo $comment['text'] ?></p>
-                                    <br>
-                                </div>
                             </li>
                     <?php endforeach; ?>
                 </ul>

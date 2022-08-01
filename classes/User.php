@@ -95,7 +95,7 @@
         }
 
         // get the user id based on the username
-        public static function getUserByUsername($username) {
+        public static function getUserIdByUsername($username) {
             $conn = Db::getInstance();
             $statement = $conn->prepare("select id from users where username = :username");
             $statement->bindValue(":username", $username);

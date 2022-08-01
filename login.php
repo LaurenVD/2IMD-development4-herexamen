@@ -13,7 +13,7 @@
         if(User::login($username, $password)) {
             $_SESSION['username'] = $username;
             $_SESSION['loggedIn'] = true;
-            $_SESSION["userId"] = User::getUserByUsername($username);
+            $_SESSION["userId"] = User::getUserIdByUsername($username);
 
             header("Location: index.php");
 		}

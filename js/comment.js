@@ -1,7 +1,7 @@
-document.querySelector(".submitComment").addEventListener("click", function(event){
+document.querySelector("#submitComment").addEventListener("click", function(event){
     event.preventDefault();
-    let taskId = document.querySelector(".submitComment").dataset.taskid;
-    let text = document.querySelector("#commentText").value;
+    const taskId = document.querySelector("#submitComment").dataset.taskid;
+    const text = document.querySelector("#commentText").value;
 
     const formData = new FormData();
     formData.append('taskId', taskId);
@@ -11,26 +11,22 @@ document.querySelector(".submitComment").addEventListener("click", function(even
         method: 'POST',
         body: formData
     })
-    .then(response => response.json())
+
+
+    .then(function(response) { return response.json(); })
     .then(result => {
         document.querySelector("#commentText").value = " ";
 
         let newComment = document.createElement('li');
         
-        let username = document.createElement('h4');
-        username.classList.add("detailsText");
-        username.innerHTML = result.username + " reageerde:";
-
+        let header = document.createElement('h4');
+        header.innerHTML = result.username + ' reacted:';
+        header.classList.add('detailsText');
         let text = document.createElement('p');
         text.innerHTML = result.body;
-        
-        newComment.appendChild(username);
+        newComment.appendChild(header);
         newComment.appendChild(text);
 
-        document.querySelector(".CommentList").appendChild(newComment);
-
-    })
-    .catch(error => {
-        console.error('Error:', error);
+        document.querySelector("#commentList").appendChild(newComment);
     });
 });

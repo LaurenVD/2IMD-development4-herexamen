@@ -2,21 +2,24 @@
     include_once('logged_in.inc.php');
     include_once('core/autoload.php');
 
+    $lijstId = $_GET["lijstId"];
+    $lijst = Lijst::getLijstById($lijstId);
+    // controleren of de gebruiker weldegelijk de lijst bezit, zo niet, redirect naar de index
+    if($lijst["userId"] != $_SESSION["userId"]){
+        header("Location: index.php");
+     }
+
     if(!empty($_POST)) {
         try {
             $task = new Task();
-            if(isset($_SESSION['userId'])) {
-                $task->setUserId($_SESSION['userId']);
-            }
-            else {
-                $task->setUserId(1);
-            }
+            $task->setUserId($_SESSION['userId']);
+            $task->setLijstId($_POST["lijstId"]);
             $task->setTitle($_POST["title"]);
-            $task->setDate(date("Y-m-d"));
+            $task->setDate($_POST["date"]);
             $task->setHour($_POST["hour"]);
             $task->add();
 
-            header("Location: lijst.php");
+            header("Location: lijst.php?lijst=".$_POST['lijstId']);
         }
         catch(Throwable $error) {
             $error = $error->getMessage();
@@ -54,7 +57,11 @@
             <input type="text" id="title" name="title" placeholder="Title">
         </div>
 
-     <div class="form__field">
+
+        <input type="hidden" name="lijstId" value="<?php echo $_GET['lijstId']; ?>">
+
+
+        <div class="form__field">
             <input type="number" id="hour" name="hour">
         </div>
 

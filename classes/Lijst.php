@@ -69,7 +69,7 @@
             $statement->execute();
         }
 
-        // get all lists information
+        // get all task information
         public static function getAll() {
             $conn = Db::getInstance();
             $statement = $conn->prepare("select * from lijst");
@@ -77,7 +77,15 @@
             return $statement->fetchAll(PDO::FETCH_ASSOC);
         }
 
-        // get a list based on the topic id
+        public static function getAllForUser($userId) {
+            $conn = Db::getInstance();
+            $statement = $conn->prepare("select * from lijst where userId = :userId");
+            $statement->bindValue(":userId", $userId);
+            $statement->execute();
+            return $statement->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        // get a list based on the id
         public static function getLijstById($id) {
             $conn = Db::getInstance();
             $statement = $conn->prepare("select * from lijst where id = :id");

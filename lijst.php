@@ -5,7 +5,12 @@
     $lijstId = $_GET['lijst'];
     $lijst = Lijst::getLijstById($lijstId);
 
-    $tasks = Task::getAll($lijstId);
+    // controleren of de gebruiker weldegelijk de lijst bezit, zo niet, redirect naar de index
+    if($lijst["userId"] != $_SESSION["userId"]){
+       header("Location: index.php");
+    }
+
+    $tasks = Task::getAllForId($lijstId);
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -32,7 +37,7 @@
 
         <!-- todo toevoegen -->
         <div class="topic">
-            <a href="add_task.php" class="add">Add a new task!</a>
+            <a href="add_task.php?lijstId=<?php echo $lijst['id']; ?>" class="add">Add a new task!</a>
         </div>
 
         <!-- tabel -->
@@ -54,5 +59,7 @@
             <?php endif; ?>
         </table>
     </div>
+
+    <script src="js/like.js"></script>
 </body>
 </html>

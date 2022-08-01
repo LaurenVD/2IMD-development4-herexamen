@@ -27,7 +27,7 @@
             return $this->userId;
         }
          
-        // user id
+        // lijst id
          public function setLijstId($lijstId) {
             $this->lijstId = $lijstId;
         }
@@ -65,7 +65,7 @@
         
         // date
         public function setDate($date) {
-            $date = new DateTime();
+            $date = new DateTime($date);
             $this->date = $date->format('Y-m-d');
         }
 
@@ -76,18 +76,19 @@
         // add a task to database
         public function add() {
             $conn = Db::getInstance();
-            $statement = $conn->prepare("insert into task (userId, title, hour, date) values (:userId, :title, :hour, :date)");
+            $statement = $conn->prepare("insert into task (userId, title, lijstId, hour, date) values (:userId, :title, :lijstId, :hour, :date)");
             $statement->bindValue(":userId", $this->userId);
             $statement->bindValue(":title", $this->title);
+            $statement->bindValue(":lijstId", $this->lijstId);
             $statement->bindValue(":hour", $this->hour);
             $statement->bindValue(":date", $this->date);
             $statement->execute();
         }
 
         // get all task information
-        public static function getAll($lijstId) {
+        public static function getAllForId($lijstId) {
             $conn = Db::getInstance();
-            $statement = $conn->prepare("select * from task where lijstId = :lijstId");
+            $statement = $conn->prepare("select * from task where lijstId = :lijstId order by date asc");
             $statement->bindValue(':lijstId', $lijstId);
             $statement->execute();
             return $statement->fetchAll(PDO::FETCH_ASSOC);

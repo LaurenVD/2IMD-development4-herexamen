@@ -24,9 +24,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup</title>
+    <link rel="stylesheet" href="css/signup.css?v=<?php echo time(); ?>">
 </head>
 <body>
-    <p>Welcom to the To-Do</p>
+    <h2>Welcom to the To-Do application</h2>
     <div class="form-signup">
                 <form action="" method="post">
 

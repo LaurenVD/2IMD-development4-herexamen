@@ -33,6 +33,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add task</title>
+    <link rel="stylesheet" href="css/add_task.css?v=<?php echo time(); ?>">
 </head>
 <body>
     <?php include_once("nav.inc.php"); ?>
@@ -54,6 +55,7 @@
          <?php endif; ?>
 
         <div class="form__field">
+            <p>Fill in your title</p>
             <input type="text" id="title" name="title" placeholder="Title">
         </div>
 
@@ -62,10 +64,12 @@
 
 
         <div class="form__field">
+            <p>Fill in your workhours</p>
             <input type="number" id="hour" name="hour">
         </div>
 
         <div class="form__field">
+            <p>Fill in your deadline</p>
             <input type="date" id="date" name="date">
         </div>
 

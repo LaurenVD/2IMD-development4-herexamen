@@ -14,7 +14,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TODO APP<?php echo $user["id"]; ?></title>
+    <title>TODO APP</title>
     <link rel="stylesheet" href="css/index.css?v=<?php echo time(); ?>">
 </head>
 <body>
@@ -31,7 +31,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">To-do lists</th>
+                    <th>To-do lists</th>
                 </tr>
             </thead>
 
@@ -39,7 +39,7 @@
                 <?php foreach($lijsten as $lijst): ?>
                     <tbody>
                         <tr>
-                            <td style="text-decoration: underline"><a href="lijst.php?lijst=<?php echo $lijst["id"]; ?>" class="btn btn-info"><?php echo htmlspecialchars($lijst['title']); ?></a></td>
+                            <td style="text-decoration: underline"><a href="lijst.php?lijst=<?php echo $lijst["id"]; ?>" class="btn"><?php echo htmlspecialchars($lijst['title']); ?></a></td>
                         </tr>
                     </tbody>
                 <?php endforeach; ?>

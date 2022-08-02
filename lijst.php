@@ -19,16 +19,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TODO</title>
+    <link rel="stylesheet" href="css/lijst.css?v=<?php echo time(); ?>">
 </head>
 <body>
     <?php include_once("nav.inc.php"); ?>
 
     <div class="header">
         <h2><?php echo htmlspecialchars($lijst['title']); ?></h2>
-        <p><?php echo htmlspecialchars($lijst['description']); ?></p>
+        <p class="description"><?php echo htmlspecialchars($lijst['description']); ?></p>
     </div>
 
-    <a href="delete_lijst.php?lijst=<?php echo $_GET["lijst"]; ?>" class="delete">Delete list</a>
+    <a href="delete_lijst.php?lijst=<?php echo $_GET["lijst"]; ?>" class="add" id="red">Delete list</a>
 
     <div class="content">
         <h2>Todo's</h2>
@@ -47,8 +48,8 @@
                 <?php foreach($tasks as $task): ?>
                     <tbody>
                         <tr>
-                            <td style="text-decoration: underline"><a href="task.php?task=<?php echo $task["id"]; ?>" class="btn btn-info"><?php echo htmlspecialchars($task['title']); ?></a></td>
-                            <td><p><?php echo htmlspecialchars($task['date']); ?></p></td>
+                            <td style="text-decoration: underline"><a href="task.php?task=<?php echo $task["id"]; ?>" class="btn"><?php echo htmlspecialchars($task['title']); ?></a></td>
+                            <td><p id="date"><?php echo htmlspecialchars($task['date']); ?></p></td>
                         </tr>
                     </tbody>
                 <?php endforeach; ?>

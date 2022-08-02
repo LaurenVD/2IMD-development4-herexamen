@@ -14,22 +14,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TODO</title>
+    <link rel="stylesheet" href="css/task.css?v=<?php echo time(); ?>">
 </head>
 <body>
     <?php include_once("nav.inc.php"); ?>    
 
     <div class="header">
         <h2><?php echo htmlspecialchars($task['title']); ?></h2>
+        <p class="bold">Deadline: </p>
         <p><?php echo htmlspecialchars($task['date']); ?></p>
+        <p class="bold">Workhours: </p>
         <p><?php echo htmlspecialchars($task['hour']); ?></p>
     </div>
 
-    <a href="delete_task.php?task=<?php echo $_GET["task"]; ?>" class="delete">Delete task</a>
+    <a href="delete_task.php?task=<?php echo $_GET["task"]; ?>" class="add" id="red">Delete task</a>
 
     <div class="commentSection">
                 <div id="commentForm">
-                    <input type="text" id="commentText" placeholder=" Laat een reactie achter">
-                    <a href="#" id="submitComment" data-taskid="<?php echo $task['id'] ?>">Submit comment</a>
+                    <input type="text" id="commentText" placeholder="Leave a comment here">
+                    <a href="#" class="add" id="submitComment" data-taskid="<?php echo $task['id'] ?>">Submit comment</a>
                 </div>
 
                 <br>

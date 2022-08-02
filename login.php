@@ -29,12 +29,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log in</title>
+    <link rel="stylesheet" href="css/login.css?v=<?php echo time(); ?>">
 </head>
 <body>
 <div class="form-login">
                 <form action="" method="post">
 
-                    <h2>Inloggen bij de to-do</h2>
+                    <h2>Log into the To-Do application</h2>
 
                     <!-- errors -->
                     <?php if(isset($error)): ?>

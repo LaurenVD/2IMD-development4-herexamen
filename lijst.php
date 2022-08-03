@@ -34,11 +34,9 @@
     <div class="content">
         <h2>Todo's</h2>
 
-        <br>
-
         <!-- todo toevoegen -->
         <div class="topic">
-            <a href="add_task.php?lijstId=<?php echo $lijst['id']; ?>" class="add">Add a new task!</a>
+            <a href="add_task.php?lijstId=<?php echo $lijst['id']; ?>" class="add">Add a new to-do!</a>
         </div>
 
         <!-- tabel -->
@@ -48,8 +46,9 @@
                 <?php foreach($tasks as $task): ?>
                     <tbody>
                         <tr>
+                            <td><a class="doneBtnAnchor" data-task-id="<?php echo $task['id'] ?>" href=""><?php if($task["done"] == 1):?><img src="./images/doneblue.svg" alt=""><?php else:?><img src="./images/donegrey.svg" alt=""><?php endif;?></a></td>
                             <td style="text-decoration: underline"><a href="task.php?task=<?php echo $task["id"]; ?>" class="btn"><?php echo htmlspecialchars($task['title']); ?></a></td>
-                            <td><p id="date"><?php echo htmlspecialchars($task['date']); ?></p></td>
+                            <td><p class="date"><?php echo htmlspecialchars($task['date']); ?></p></td>
                         </tr>
                     </tbody>
                 <?php endforeach; ?>
@@ -61,6 +60,6 @@
         </table>
     </div>
 
-    <script src="js/like.js"></script>
+    <script src="js/done.js"></script>
 </body>
 </html>

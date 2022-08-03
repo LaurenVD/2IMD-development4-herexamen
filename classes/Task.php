@@ -2,20 +2,21 @@
     include_once(__DIR__ . "/Db.php");
 
     class Task {
-        private $taskId;
+        private $id;
         private $userId;
         private $lijstId;
         private $title;
         private $hour;
         private $date;
+        private $done;
 
         // task id
-        public function setTaskId($taskId) {
-            $this->taskId = $taskId;
+        public function setId($id) {
+            $this->id = $id;
         }
 
-        public function getTaskId() {
-            return $this->taskId;
+        public function getId() {
+            return $this->id;
         }
 
         // user id
@@ -73,6 +74,15 @@
             return $this->date;
         }
 
+        // done
+        public function setDone($done) {
+            $this->done = $done;
+        }
+
+        public function getDone() {
+            return $this->done;
+        }
+
         // add a task to database
         public function add() {
             $conn = Db::getInstance();
@@ -82,6 +92,30 @@
             $statement->bindValue(":lijstId", $this->lijstId);
             $statement->bindValue(":hour", $this->hour);
             $statement->bindValue(":date", $this->date);
+            $statement->execute();
+        }
+
+        // update to get the to-do to done or not done
+        public function update() {
+            $conn = Db::getInstance();
+            $statement = $conn->prepare("UPDATE task SET userId = :userId, title = :title, lijstId = :lijstId, hour = :hour, date = :date, done = :done WHERE id = :id");
+
+            $userId = $this->getUserId();
+            $id = $this->getId();
+            $title = $this->getTitle();
+            $lijstId = $this->getLijstId();
+            $hour = $this->getHour();
+            $date = $this->getDate();
+            $done = $this->getDone();
+
+            $statement->bindValue(':userId', $userId);
+            $statement->bindValue(':id', $id);
+            $statement->bindValue(":title", $title);
+            $statement->bindValue(":lijstId", $lijstId);
+            $statement->bindValue(":hour", $hour);
+            $statement->bindValue(":date", $date);
+            $statement->bindValue(":done", $done);
+
             $statement->execute();
         }
 
@@ -96,6 +130,25 @@
 
         // get a task based on the topic id
         public static function getTaskById($id) {
+            $conn = Db::getInstance();
+            $statement = $conn->prepare("select * from task where id = :id");
+            $statement->bindValue(":id", $id);
+            $statement->execute();
+            $taskArray = $statement->fetch(PDO::FETCH_ASSOC);
+
+            $task = new self();
+            $task->setUserId($taskArray['userId']);
+            $task->setLijstId($taskArray["lijstId"]);
+            $task->setId($taskArray["id"]);
+            $task->setTitle($taskArray["title"]);
+            $task->setDate($taskArray["date"]);
+            $task->setHour($taskArray["hour"]);
+            $task->setDone($taskArray["done"]);
+            return $task;
+        }
+
+        // get a task based on the topic id
+        public static function getTaskArrayById($id) {
             $conn = Db::getInstance();
             $statement = $conn->prepare("select * from task where id = :id");
             $statement->bindValue(":id", $id);

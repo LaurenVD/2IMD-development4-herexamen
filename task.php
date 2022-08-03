@@ -3,7 +3,7 @@
     include_once('core/autoload.php');
 
     $taskId = $_GET['task'];
-    $task = Task::getTaskById($taskId);
+    $task = Task::getTaskArrayById($taskId);
 
     $comments = Comment::getAll($_GET['task']);
 

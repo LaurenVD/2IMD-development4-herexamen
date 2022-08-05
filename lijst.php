@@ -10,7 +10,10 @@
        header("Location: index.php");
     }
 
-    $tasks = Task::getAllForId($lijstId);
+    //we nemen de variabele als deze is meegegeven
+    $sort = isset($_GET['sort']) ? $_GET['sort'] : 'date';
+    $order = isset($_GET['order']) ? $_GET['order'] : 'asc';
+    $tasks = Task::getAllForId($lijstId, $sort, $order);
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -39,6 +42,9 @@
             <a href="add_task.php?lijstId=<?php echo $lijst['id']; ?>" class="add">Add a new to-do!</a>
         </div>
 
+        <a href="lijst.php?lijst=<?php echo $lijst['id']; ?>&sort=date&order=asc">Sorteer op datum</a>
+        <a href="lijst.php?lijst=<?php echo $lijst['id']; ?>&sort=hour&order=desc">Sorteer op uren</a>
+
         <!-- tabel -->
         <table class="table">
 
@@ -48,7 +54,9 @@
                         <tr>
                             <td><a class="doneBtnAnchor" data-task-id="<?php echo $task['id'] ?>" href=""><?php if($task["done"] == 1):?><img src="./images/doneblue.svg" alt=""><?php else:?><img src="./images/donegrey.svg" alt=""><?php endif;?></a></td>
                             <td style="text-decoration: underline"><a href="task.php?task=<?php echo $task["id"]; ?>" class="btn"><?php echo htmlspecialchars($task['title']); ?></a></td>
-                            <td><p class="date"><?php echo htmlspecialchars($task['date']); ?></p></td>
+                            <td><p class="date <?php if(Task::getIsPast($task['date']) == 1): ?>isPast <?php endif; ?>"><?php echo htmlspecialchars($task['date']); ?></p></td>
+                            <td><p> <?php echo Task::getDaysRemaining($task['date']); ?></p></td>
+                            <td><p> <?php echo $task['hour']; ?></p></td>
                         </tr>
                     </tbody>
                 <?php endforeach; ?>

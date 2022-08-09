@@ -10,6 +10,7 @@ class Task
     private $hour;
     private $date;
     private $done;
+    private $attachment;
 
     // task id
     public function setId($id)
@@ -99,6 +100,17 @@ class Task
         return $this->done;
     }
 
+    //attachment
+    public function setAttachment($attachment)
+    {
+        $this->attachment = $attachment;
+    }
+
+    public function getAttachment()
+    {
+        return $this->attachment;
+    }
+
     // add a task to database
     public function add()
     {
@@ -116,7 +128,7 @@ class Task
     public function update()
     {
         $conn = Db::getInstance();
-        $statement = $conn->prepare("UPDATE task SET userId = :userId, title = :title, lijstId = :lijstId, hour = :hour, date = :date, done = :done WHERE id = :id");
+        $statement = $conn->prepare("UPDATE task SET userId = :userId, title = :title, lijstId = :lijstId, hour = :hour, date = :date, done = :done, attachment = :attachment WHERE id = :id");
 
         $userId = $this->getUserId();
         $id = $this->getId();
@@ -125,6 +137,7 @@ class Task
         $hour = $this->getHour();
         $date = $this->getDate();
         $done = $this->getDone();
+        $attachment = $this->getAttachment();
 
         $statement->bindValue(':userId', $userId);
         $statement->bindValue(':id', $id);
@@ -133,6 +146,7 @@ class Task
         $statement->bindValue(":hour", $hour);
         $statement->bindValue(":date", $date);
         $statement->bindValue(":done", $done);
+        $statement->bindValue(":attachment", $attachment);
 
         $statement->execute();
     }
@@ -166,6 +180,7 @@ class Task
         $task->setDate($taskArray["date"]);
         $task->setHour($taskArray["hour"]);
         $task->setDone($taskArray["done"]);
+        $task->setAttachment($taskArray["attachment"]);
         return $task;
     }
 
@@ -191,6 +206,15 @@ class Task
     public static function getIsPast($deadline){
         $date1 = new DateTime($deadline);
         return $date1 < new DateTime();
+    }
+
+    public static function updateDateForId($id, $date){
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("UPDATE task SET date = :date WHERE id = :id");
+        $statement->bindValue(":date", $date);
+        $statement->bindValue(':id', $id);
+        $result = $statement->execute();
+        return $result;
     }
 
     // delete user task (future)

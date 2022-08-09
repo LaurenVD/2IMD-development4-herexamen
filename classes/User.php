@@ -2,9 +2,9 @@
     include_once(__DIR__ . "/Db.php");
 
     class User {
-        private $userId;
-        private $username;
-        private $password;
+        protected $userId;
+        protected $username;
+        protected $password;
 
         // id
         public function setUserId($userId) {
@@ -111,5 +111,13 @@
             $statement->bindValue(':userId', $id);
             $statement->execute();
             return $statement->fetch();
+        }
+
+        public function delete()
+        {
+            $conn = Db::getInstance();
+            $statement = $conn->prepare("delete from users where id = :id");
+            $statement->bindValue(":id", $this->userId);
+            $statement->execute();
         }
     }

@@ -14,6 +14,7 @@
             $_SESSION['username'] = $username;
             $_SESSION['loggedIn'] = true;
             $_SESSION["userId"] = User::getUserIdByUsername($username);
+            $_SESSION['is_admin'] = Admin::isAdmin($_SESSION["userId"]);
 
             header("Location: index.php");
 		}

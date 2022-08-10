@@ -1,19 +1,15 @@
 <?php
     include_once(__DIR__ . "/Db.php");
 
-    class Lijst {
-        private $lijstId;
+    class TodoList {
+        private $id;
         private $userId;
         private $title;
         private $description;
 
-        // lijst id
-        public function setLijstId($lijstId) {
-            $this->lijstId = $lijstId;
-        }
-
-        public function getLijstId() {
-            return $this->lijstId;
+        // id
+        public function getId() {
+            return $this->id;
         }
 
         // user id
@@ -62,44 +58,52 @@
         // add a list to database
         public function add() {
             $conn = Db::getInstance();
-            $statement = $conn->prepare("insert into lijst (userId, title, description) values (:userId, :title, :description)");
+            $statement = $conn->prepare("insert into todo_lists (userId, title, description) values (:userId, :title, :description)");
             $statement->bindValue(":userId", $this->userId);
             $statement->bindValue(":title", $this->title);
             $statement->bindValue(":description", $this->description);
             $statement->execute();
         }
 
-        // get all task information
+        // get all todo lists information
         public static function getAll() {
             $conn = Db::getInstance();
-            $statement = $conn->prepare("select * from lijst");
+            $statement = $conn->prepare("select * from todo_lists");
             $statement->execute();
             return $statement->fetchAll(PDO::FETCH_ASSOC);
         }
 
         public static function getAllForUser($userId) {
             $conn = Db::getInstance();
-            $statement = $conn->prepare("select * from lijst where userId = :userId");
+            $statement = $conn->prepare("select * from todo_lists where userId = :userId");
             $statement->bindValue(":userId", $userId);
             $statement->execute();
             return $statement->fetchAll(PDO::FETCH_ASSOC);
         }
 
         // get a list based on the id
-        public static function getLijstById($id) {
+        public static function getListArrayById($id) {
             $conn = Db::getInstance();
-            $statement = $conn->prepare("select * from lijst where id = :id");
+            $statement = $conn->prepare("select * from todo_lists where id = :id");
             $statement->bindValue(":id", $id);
             $statement->execute();
             return $statement->fetch(PDO::FETCH_ASSOC);
         }
 
-        // delete a list
-        public static function deleteLijst($lijstId) {
+        public static function isThereATaskWithTitleInList($title, $listId) {
             $conn = Db::getInstance();
-            $statement = $conn->prepare("delete from lijst where id = :lijstId");
-            $statement->bindValue(":lijstId", $lijstId);
+            $statement = $conn->prepare("select count(*) from tasks where title = :title and listId = :listId");
+            $statement->bindValue(":title", $title);
+            $statement->bindValue(":listId", $listId);
             $statement->execute();
+            return (int) $statement->fetchColumn() > 0;
         }
 
+        // delete a list
+        public static function deleteList($listId) {
+            $conn = Db::getInstance();
+            $statement = $conn->prepare("delete from todo_lists where id = :listId");
+            $statement->bindValue(":listId", $listId);
+            $statement->execute();
+        }
     }

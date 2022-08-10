@@ -2,24 +2,31 @@
     include_once('logged_in.inc.php');
     include_once('core/autoload.php');
 
-    $lijstId = $_GET["lijstId"];
-    $lijst = Lijst::getLijstById($lijstId);
+    $listId = $_GET["listId"];
+    $list = TodoList::getListArrayById($listId);
     // controleren of de gebruiker weldegelijk de lijst bezit, zo niet, redirect naar de index
-    if($lijst["userId"] != $_SESSION["userId"]){
+    if($list["userId"] != $_SESSION["userId"]){
         header("Location: index.php");
+        die;
      }
 
+    // error wanneer een titel van een task al in gebruik is
     if(!empty($_POST)) {
+        if(TodoList::isThereATaskWithTitleInList($_POST["title"], $listId) == true){
+            header("Location: add_task.php?listId=".$_POST['listId']."&error=Er staat iets in task met deze naam");
+            die;
+        }
         try {
             $task = new Task();
             $task->setUserId($_SESSION['userId']);
-            $task->setLijstId($_POST["lijstId"]);
+            $task->setListId($_POST["listId"]);
             $task->setTitle($_POST["title"]);
             $task->setDate($_POST["date"]);
             $task->setHour($_POST["hour"]);
             $task->add();
 
-            header("Location: lijst.php?lijst=".$_POST['lijstId']);
+            header("Location: todo_list.php?list=".$_POST['listId']);
+            die;
         }
         catch(Throwable $error) {
             $error = $error->getMessage();
@@ -42,7 +49,9 @@
 
     <h2>Add a new task</h2>
 
-    <br>
+    <?php if(isset($_GET["error"])): ?>
+        Er is reeds een taak met deze naam.
+    <?php endif; ?>
 
     <form action="" method="post">
         <!-- errors -->
@@ -60,7 +69,7 @@
         </div>
 
 
-        <input type="hidden" name="lijstId" value="<?php echo $_GET['lijstId']; ?>">
+        <input type="hidden" name="listId" value="<?php echo $_GET['listId']; ?>">
 
 
         <div class="form__field">

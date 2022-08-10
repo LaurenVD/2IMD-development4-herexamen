@@ -8,6 +8,7 @@
     if(isset($_POST['submit'])){
         Task::updateDateForId($taskId, $_POST['date']);
         header("Location: task.php?task=".$_GET['task']);
+        die;
     }
 
     $task = Task::getTaskArrayById($taskId);

@@ -4,6 +4,7 @@
 
     if($_SESSION['is_admin'] === false){
        header("Location: index.php");
+       die;
     }
 
     $admins = Admin::getAll();
@@ -15,7 +16,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TODO</title>
-    <link rel="stylesheet" href="css/lijst.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="css/list.css?v=<?php echo time(); ?>">
 </head>
 <body>
     <?php include_once("nav.inc.php"); ?>
@@ -50,10 +51,10 @@
 
         <h2>Statistieken</h2>
         <ul>
-            <li>Aantal users: <?php echo Statistieken::getNumberOfUsers();?></li>
-            <li>Aantal lijsten: <?php echo Statistieken::getNumberOfLists();?></li>
-            <li>Gemiddeld aantal lijsten per gebruiker: <?php echo round(Statistieken::getAverageNumberOfListsPerUser(), 1);?></li> <!-- 1 decimaal na de komma -->
-            <li>Gemiddeld aantal openstaande werkuren per gebruiker: <?php echo round(Statistieken::getAverageSumOfOpenTaskHoursPerUser(), 1);?></li>
+            <li>Aantal users: <?php echo Statistics::getNumberOfUsers();?></li>
+            <li>Aantal lijsten: <?php echo Statistics::getNumberOfLists();?></li>
+            <li>Gemiddeld aantal lijsten per gebruiker: <?php echo round(Statistics::getAverageNumberOfListsPerUser(), 1);?></li> <!-- 1 decimaal na de komma -->
+            <li>Gemiddeld aantal openstaande werkuren per gebruiker: <?php echo round(Statistics::getAverageSumOfOpenTaskHoursPerUser(), 1);?></li>
         </ul>
 
     </div>

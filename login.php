@@ -3,7 +3,8 @@
     session_start();
 
     if(isset($_SESSION["loggedIn"])) {
-        header("Location: index.php");   
+        header("Location: index.php"); 
+        die;  
     }
 
     if(isset($_POST["login"])) {
@@ -17,6 +18,7 @@
             $_SESSION['is_admin'] = Admin::isAdmin($_SESSION["userId"]);
 
             header("Location: index.php");
+            die;
 		}
         else {
             $error = "Your email or password is incorrect.";

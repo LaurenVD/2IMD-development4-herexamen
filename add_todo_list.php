@@ -4,18 +4,19 @@
 
     if(!empty($_POST)) {
         try {
-            $lijst = new Lijst();
+            $todoList = new TodoList();
             if(isset($_SESSION['userId'])) {
-                $lijst->setUserId($_SESSION['userId']);
+                $todoList->setUserId($_SESSION['userId']);
             }
             else {
-                $lijst->setUserId(1);
+                $todoList->setUserId(1);
             }
-            $lijst->setTitle($_POST["title"]);
-            $lijst->setDescription($_POST["description"]);
-            $lijst->add();
+            $todoList->setTitle($_POST["title"]);
+            $todoList->setDescription($_POST["description"]);
+            $todoList->add();
 
             header("Location: index.php");
+            die;
         }
         catch(Throwable $error) {
             $error = $error->getMessage();
@@ -29,7 +30,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add list</title>
-    <link rel="stylesheet" href="css/add_lijst.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="css/add_list.css?v=<?php echo time(); ?>">
 </head>
 <body>
    <?php include_once("nav.inc.php"); ?>

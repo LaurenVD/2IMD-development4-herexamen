@@ -2,18 +2,19 @@
     include_once('logged_in.inc.php');
     include_once('core/autoload.php');
 
-    $lijstId = $_GET['lijst'];
-    $lijst = Lijst::getLijstById($lijstId);
+    $listId = $_GET['list'];
+    $list = TodoList::getListArrayById($listId);
 
     // controleren of de gebruiker weldegelijk de lijst bezit, zo niet, redirect naar de index
-    if($lijst["userId"] != $_SESSION["userId"]){
+    if($list["userId"] != $_SESSION["userId"]){
        header("Location: index.php");
+       die;
     }
 
     //we nemen de variabele als deze is meegegeven
     $sort = isset($_GET['sort']) ? $_GET['sort'] : 'date';
     $order = isset($_GET['order']) ? $_GET['order'] : 'asc';
-    $tasks = Task::getAllForId($lijstId, $sort, $order);
+    $tasks = Task::getAllForId($listId, $sort, $order);
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -22,28 +23,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TODO</title>
-    <link rel="stylesheet" href="css/lijst.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="css/list.css?v=<?php echo time(); ?>">
 </head>
 <body>
     <?php include_once("nav.inc.php"); ?>
 
     <div class="header">
-        <h2><?php echo htmlspecialchars($lijst['title']); ?></h2>
-        <p class="description"><?php echo htmlspecialchars($lijst['description']); ?></p>
+        <h2><?php echo htmlspecialchars($list['title']); ?></h2>
+        <p class="description"><?php echo htmlspecialchars($list['description']); ?></p>
     </div>
 
-    <a href="delete_lijst.php?lijst=<?php echo $_GET["lijst"]; ?>" class="add" id="red">Delete list</a>
+    <a href="delete_todo_list.php?list=<?php echo $_GET["list"]; ?>" class="add" id="red">Delete list</a>
 
     <div class="content">
         <h2>Todo's</h2>
 
         <!-- todo toevoegen -->
-        <div class="topic">
-            <a href="add_task.php?lijstId=<?php echo $lijst['id']; ?>" class="add">Add a new to-do!</a>
+        <div class="task">
+            <a href="add_task.php?listId=<?php echo $list['id']; ?>" class="add">Add a new to-do!</a>
         </div>
 
-        <a href="lijst.php?lijst=<?php echo $lijst['id']; ?>&sort=date&order=asc">Sorteer op datum</a>
-        <a href="lijst.php?lijst=<?php echo $lijst['id']; ?>&sort=hour&order=desc">Sorteer op uren</a>
+        <a href="todo_list.php?list=<?php echo $list['id']; ?>&sort=date&order=asc">Sorteer op datum</a>
+        <a href="todo_list.php?list=<?php echo $list['id']; ?>&sort=hour&order=desc">Sorteer op uren</a>
 
         <!-- tabel -->
         <table class="table">

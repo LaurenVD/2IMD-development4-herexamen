@@ -24,12 +24,16 @@ p {
     margin-bottom: 50px;
 }
 
-#date {
+.date, #date {
     padding-left: 70px;
 }
 
 #red {
     color: red;
+}
+
+.darkblue {
+    color: darkblue;
 }
 
 .add {

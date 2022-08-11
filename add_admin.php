@@ -4,6 +4,7 @@
 
     if($_SESSION['is_admin'] === false){
         header("Location: index.php");
+        die;
      }
 
     if(!empty($_POST)) {
@@ -11,9 +12,10 @@
             $admin = new Admin();
             $admin->setUsername($_POST["username"]);
             $admin->setPassword($_POST["password"]);
-            $admin->signup();
+            $admin->store();
 
             header("Location: admin.php");
+            die;
         }
         catch(Throwable $error) {
             $error = $error->getMessage();

@@ -4,6 +4,7 @@
 
     if($_SESSION['is_admin'] === false){
         header("Location: index.php");
+        die;
      }
 
     if(!empty($_GET)) {
@@ -13,6 +14,7 @@
             $admin->delete();
 
             header("Location: admin.php");
+            die;
         }
         catch(Throwable $error) {
             $error = $error->getMessage();

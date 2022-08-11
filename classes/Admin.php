@@ -2,21 +2,15 @@
     include_once(__DIR__ . "/Db.php");
 
     class Admin extends User{
-        private $admin;
-
-        // admin
-        public function setAdmin($admin) {
-            $this->admin = $admin;
-        }
-
-        public function getAdmin() {
-            return $this->admin;
+        private $isAdmin;
+        
+        public function getIsAdmin() {
+            return $this->isAdmin;
         }
 
         public function save(){
             $conn = DB::getInstance();
             $statement = $conn->prepare("insert into users (is_admin) values (1)");
-            $statement->bindValue("admin", $this->admin);
             return $statement->execute();
         }
 
@@ -32,7 +26,7 @@
             return $userArray["is_admin"] === "1";
         }
 
-        public function signup() {
+        public function store() {
             $conn = Db::getInstance();
             $statement = $conn->prepare("insert into users (username, password, is_admin) values (:username, :password, 1)");
             $statement->bindValue(":username", $this->username);

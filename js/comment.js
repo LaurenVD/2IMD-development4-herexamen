@@ -7,7 +7,7 @@ document.querySelector("#submitComment").addEventListener("click", function(even
     formData.append('taskId', taskId);
     formData.append('text', text);
 
-    fetch('./ajax/savecomment.php', {
+    fetch('./ajax/save_comment.php', {
         method: 'POST',
         body: formData
     })

@@ -13,6 +13,7 @@ h2 {
 
 a {
     margin-left: 20px;
+    padding-bottom: 20px;
 }
 
 p {
@@ -24,7 +25,7 @@ p {
     margin-bottom: 50px;
 }
 
-#date {
+.date, #date {
     padding-left: 70px;
 }
 

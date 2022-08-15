@@ -1,12 +1,11 @@
-<?php include_once('logged_in.inc.php');?>
-<?php include_once('core/autoload.php');?>
-
 <?php 
+    include_once('logged_in.inc.php');
+    include_once('core/autoload.php');
 
     $userId = $_SESSION["userId"];
     $user = User::getUserById($userId);
 
-    $lijsten = Lijst::getAllForUser($userId);
+    $todoLists = TodoList::getAllForUser($userId);
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -24,8 +23,8 @@
         <h2>Your to-do's</h2>
 
         <!-- lijst toevoegen -->
-        <div class="topic">
-            <a href="add_lijst.php" class="add">Add a new list!</a>
+        <div class="task">
+            <a href="add_todo_list.php" class="add">Add a new list!</a>
         </div>
 
         <table class="table">
@@ -35,17 +34,17 @@
                 </tr>
             </thead>
 
-            <?php if(!empty($lijsten)): ?>
-                <?php foreach($lijsten as $lijst): ?>
+            <?php if(!empty($todoLists)): ?>
+                <?php foreach($todoLists as $todoList): ?>
                     <tbody>
                         <tr>
-                            <td style="text-decoration: underline"><a href="lijst.php?lijst=<?php echo $lijst["id"]; ?>" class="btn"><?php echo htmlspecialchars($lijst['title']); ?></a></td>
+                            <td style="text-decoration: underline"><a href="todo_list.php?list=<?php echo $todoList["id"]; ?>" class="btn"><?php echo htmlspecialchars($todoList['title']); ?></a></td>
                         </tr>
                     </tbody>
                 <?php endforeach; ?>
             <?php endif; ?>
 
-            <?php if(empty($lijsten)): ?>
+            <?php if(empty($todoLists)): ?>
                 <tbody>
                     <td>Oops! You have no lists!</td>
                 </tbody>

@@ -5,7 +5,7 @@ class Task
 {
     private $id;
     private $userId;
-    private $lijstId;
+    private $listId;
     private $title;
     private $hour;
     private $date;
@@ -35,14 +35,14 @@ class Task
     }
 
     // lijst id
-    public function setLijstId($lijstId)
+    public function setListId($listId)
     {
-        $this->lijstId = $lijstId;
+        $this->listId = $listId;
     }
 
-    public function getLijstId()
+    public function getListId()
     {
-        return $this->lijstId;
+        return $this->listId;
     }
 
     // title
@@ -115,10 +115,10 @@ class Task
     public function add()
     {
         $conn = Db::getInstance();
-        $statement = $conn->prepare("insert into task (userId, title, lijstId, hour, date) values (:userId, :title, :lijstId, :hour, :date)");
+        $statement = $conn->prepare("insert into tasks (userId, title, listId, hour, date) values (:userId, :title, :listId, :hour, :date)");
         $statement->bindValue(":userId", $this->userId);
         $statement->bindValue(":title", $this->title);
-        $statement->bindValue(":lijstId", $this->lijstId);
+        $statement->bindValue(":listId", $this->listId);
         $statement->bindValue(":hour", $this->hour);
         $statement->bindValue(":date", $this->date);
         $statement->execute();
@@ -128,53 +128,44 @@ class Task
     public function update()
     {
         $conn = Db::getInstance();
-        $statement = $conn->prepare("UPDATE task SET userId = :userId, title = :title, lijstId = :lijstId, hour = :hour, date = :date, done = :done, attachment = :attachment WHERE id = :id");
+        $statement = $conn->prepare("UPDATE tasks SET userId = :userId, title = :title, listId = :listId, hour = :hour, date = :date, done = :done, attachment = :attachment WHERE id = :id");
 
-        $userId = $this->getUserId();
-        $id = $this->getId();
-        $title = $this->getTitle();
-        $lijstId = $this->getLijstId();
-        $hour = $this->getHour();
-        $date = $this->getDate();
-        $done = $this->getDone();
-        $attachment = $this->getAttachment();
-
-        $statement->bindValue(':userId', $userId);
-        $statement->bindValue(':id', $id);
-        $statement->bindValue(":title", $title);
-        $statement->bindValue(":lijstId", $lijstId);
-        $statement->bindValue(":hour", $hour);
-        $statement->bindValue(":date", $date);
-        $statement->bindValue(":done", $done);
-        $statement->bindValue(":attachment", $attachment);
-
+        $statement->bindValue(':userId', $this->userId);
+        $statement->bindValue(':id', $this->id);
+        $statement->bindValue(":title", $this->title);
+        $statement->bindValue(":listId", $this->listId);
+        $statement->bindValue(":hour", $this->hour);
+        $statement->bindValue(":date", $this->date);
+        $statement->bindValue(":done", $this->done);
+        $statement->bindValue(":attachment", $this->attachment);
         $statement->execute();
     }
 
     // get all task information
-    public static function getAllForId($lijstId, $sort, $order)
+    public static function getAllForId($listId, $sort, $order)
     {
-        $sort = self::white_list($sort, ["date", "hour"]);
-        $order = self::white_list(strtolower($order), ["asc", "desc"]);
+        $sanitisedSort = self::whiteList($sort, ["date", "hour"]);
+        $sanitisedOrder = self::whiteList(strtolower($order), ["asc", "desc"]);
         $conn = Db::getInstance();
-        $statement = $conn->prepare("select * from task where lijstId = :lijstId order by $sort $order");
-        $statement->bindValue(':lijstId', $lijstId);
+        // de variabelen sort en order worden gesanitised door de whiteList functie
+        $statement = $conn->prepare("select * from tasks where listId = :listId order by $sanitisedSort $sanitisedOrder");
+        $statement->bindValue(':listId', $listId);
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // get a task based on the topic id
+    // get a task based on the id
     public static function getTaskById($id)
     {
         $conn = Db::getInstance();
-        $statement = $conn->prepare("select * from task where id = :id");
+        $statement = $conn->prepare("select * from tasks where id = :id");
         $statement->bindValue(":id", $id);
         $statement->execute();
         $taskArray = $statement->fetch(PDO::FETCH_ASSOC);
 
         $task = new self();
         $task->setUserId($taskArray['userId']);
-        $task->setLijstId($taskArray["lijstId"]);
+        $task->setListId($taskArray["listId"]);
         $task->setId($taskArray["id"]);
         $task->setTitle($taskArray["title"]);
         $task->setDate($taskArray["date"]);
@@ -184,11 +175,11 @@ class Task
         return $task;
     }
 
-    // get a task based on the topic id
+    // get a task based on the task id
     public static function getTaskArrayById($id)
     {
         $conn = Db::getInstance();
-        $statement = $conn->prepare("select * from task where id = :id");
+        $statement = $conn->prepare("select * from tasks where id = :id");
         $statement->bindValue(":id", $id);
         $statement->execute();
         return $statement->fetch(PDO::FETCH_ASSOC);
@@ -210,33 +201,53 @@ class Task
 
     public static function updateDateForId($id, $date){
         $conn = Db::getInstance();
-        $statement = $conn->prepare("UPDATE task SET date = :date WHERE id = :id");
+        $statement = $conn->prepare("UPDATE tasks SET date = :date WHERE id = :id");
         $statement->bindValue(":date", $date);
         $statement->bindValue(':id', $id);
         $result = $statement->execute();
         return $result;
     }
 
-    // delete user task (future)
+    // delete task
     public static function deleteTask($taskId)
     {
         $conn = Db::getInstance();
-        $statement = $conn->prepare("delete from task where id = :taskId");
+        $statement = $conn->prepare("delete from tasks where id = :taskId");
+        $statement->bindValue(":taskId", $taskId);
+        $statement->execute();
+    }
+
+    // delete attachment
+    public static function deleteAttachment($taskId){
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("update tasks set attachment = null where id = :taskId");
+        $statement->bindValue(":taskId", $taskId);
+        $statement->execute();
+    }
+
+    // delete date
+    public static function setDateToNull($taskId){
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("update tasks set date = null where id = :taskId");
         $statement->bindValue(":taskId", $taskId);
         $statement->execute();
     }
 
     // bron: https://phpdelusions.net/pdo/whitelisting_helper_function to filter data
-    private static function white_list($value, $allowed)
-    {
-        if ($value === null) {
+    // dit wordt gebruikt om alleen toegestane waarden toe te staan
+    private static function whiteList($input, $allowed)
+    { //indien er geen input is, gebruiken we de eerste waarde van de toegestane waarden als default waarde
+        if ($input === null) {
             return $allowed[0];
         }
-        $key = array_search($value, $allowed, true);
+        // er wordt gecontroleerd of de waarde van de input wel in de toegestane waarden zit
+        $key = array_search($input, $allowed, true);
         if ($key === false) {
+            // indien niet, dan wordt de eerste waarde van de toegestane waarden als default waarde gebruikt
             return $allowed[0];
         } else {
-            return $value;
+            // zo ja, dan wordt de input toegestaan
+            return $input;
         }
     }
 }

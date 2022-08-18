@@ -27,6 +27,8 @@
             <a href="add_todo_list.php" class="add">Add a new list!</a>
         </div>
 
+        <br>
+
         <table class="table">
             <thead>
                 <tr>

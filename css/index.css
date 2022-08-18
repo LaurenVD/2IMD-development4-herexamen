@@ -8,7 +8,7 @@
 h2 {
     margin-left: 50px;
     margin-top: 50px;
-    margin-bottom: 20px;
+    padding-bottom: 10px;
 }
 
 a {
@@ -17,6 +17,10 @@ a {
 
 p {
     margin-left: 20px;
+}
+
+td {
+    padding-bottom: 10px;
 }
 
 .description {
@@ -34,7 +38,6 @@ p {
 
 .add {
     color: green;
-
     margin-left: 50px;
     padding: 5px;
     border-style: solid;

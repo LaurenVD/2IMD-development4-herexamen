@@ -29,7 +29,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add admin</title>
-    <link rel="stylesheet" href="css/add_task.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="css/add_admin.css?v=<?php echo time(); ?>">
 </head>
 <body>
     <?php include_once("nav.inc.php"); ?>
@@ -42,7 +42,7 @@
             <!-- errors -->
             <?php if (isset($error)) : ?>
                 <div class="form-error">
-                    <p><strong>Opgepast:</strong></p>
+                    <p><strong>Watch out:</strong></p>
                     <?php if (isset($error)) {
                         echo $error;
                     } ?>
@@ -56,12 +56,12 @@
 
             <!-- wachtwoord -->
             <div class="form__field">
-                <input type="password" id="wachtwoord" name="password" placeholder="Wachtwoord">
+                <input type="password" id="password" name="password" placeholder="Password">
             </div>
 
             <!-- btn -->
             <div class="form__field">
-                <input type="submit" value="toevoegen" class="btn-toevoegen">
+                <input type="submit" value="add" class="submit">
             </div>
 
         </form>

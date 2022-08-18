@@ -43,7 +43,7 @@
                     <!-- errors -->
                     <?php if(isset($error)): ?>
                         <div class="form-error">
-                            <p><strong>Opgepast:</strong></p>
+                            <p><strong>Watch out:</strong></p>
                             <?php if(isset($error)) { echo $error; }?>
                         </div>
                     <?php endif; ?>
@@ -55,7 +55,7 @@
 
                     <!-- wachtwoord -->
                     <div class="form__field">
-                        <input type="password" id="wachtwoord" name="password" placeholder="Wachtwoord">
+                        <input type="password" id="wachtwoord" name="password" placeholder="Password">
                     </div>
 
                     <!-- btn -->
@@ -64,7 +64,7 @@
                     </div>
 
                     <!-- signup -->
-                    <p class="signup">Heb je nog geen account? <a href="signup.php" target="_blank"><strong>Registreren</strong></a></p>
+                    <p class="signup">Don't have an account yet? <a href="signup.php" target="_blank"><strong>Sign up!</strong></a></p>
 
                 </form>
             </div>

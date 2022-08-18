@@ -22,7 +22,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TODO</title>
+    <title>Lists</title>
     <link rel="stylesheet" href="css/todoList.css?v=<?php echo time(); ?>">
 </head>
 <body>
@@ -33,20 +33,20 @@
         <p class="description"><?php echo htmlspecialchars($list['description']); ?></p>
     </div>
 
-    <a href="delete_todo_list.php?list=<?php echo $_GET["list"]; ?>" class="add" id="red">Delete list</a>
+    <a href="delete_todo_list.php?list=<?php echo $_GET["list"]; ?>" class="submit" id="red">Delete list</a>
 
     <div class="content">
         <h2>Todo's</h2>
 
         <!-- todo toevoegen -->
         <div class="task">
-            <a href="add_task.php?listId=<?php echo $list['id']; ?>" class="add">Add a new to-do!</a>
+            <a href="add_task.php?listId=<?php echo $list['id']; ?>" class="submit">Add a new to-do!</a>
         </div>
 
         <br>
 
-        <a class="sort" href="todo_list.php?list=<?php echo $list['id']; ?>&sort=date&order=asc">Sorteer op datum</a>
-        <a class="sort" href="todo_list.php?list=<?php echo $list['id']; ?>&sort=hour&order=desc">Sorteer op uren</a>
+        <a class="sort" href="todo_list.php?list=<?php echo $list['id']; ?>&sort=date&order=asc">Sort date</a>
+        <a class="sort" href="todo_list.php?list=<?php echo $list['id']; ?>&sort=hour&order=desc">Sort workhours</a>
 
         <!-- tabel -->
         <table class="table">

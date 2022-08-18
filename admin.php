@@ -15,7 +15,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TODO</title>
+    <title>Admin</title>
     <link rel="stylesheet" href="css/admin.css?v=<?php echo time(); ?>">
 </head>
 <body>
@@ -28,7 +28,7 @@
     <div class="content">
         <h2>Admins</h2>
 
-            <a href="add_admin.php" class="add">Add a new admin</a>
+            <a href="add_admin.php" class="submit">Add a new admin</a>
 
         <!-- tabel -->
         <table class="table">
@@ -38,7 +38,7 @@
                     <tbody>
                         <tr>
                             <td style="text-decoration: underline"><?php echo $admin['username']; ?></td>
-                            <td><a class="delete" href="delete_admin.php?adminId=<?php echo $admin["id"]; ?>" onClick="return confirm('Ben je zeker?');">Delete admin</a></td>
+                            <td><a class="delete" href="delete_admin.php?adminId=<?php echo $admin["id"]; ?>" onClick="return confirm('Are you sure?');">Delete admin</a></td>
                         </tr>
                     </tbody>
                 <?php endforeach; ?>
@@ -49,7 +49,7 @@
             <?php endif; ?>
         </table>
 
-        <h2>Statistieken</h2>
+        <h2>Statistics</h2>
         <ul>
             <li>Amount of users: <?php echo Statistics::getNumberOfUsers();?></li>
             <li>Amount of lists: <?php echo Statistics::getNumberOfLists();?></li>

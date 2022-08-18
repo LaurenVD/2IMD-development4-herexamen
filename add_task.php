@@ -50,7 +50,7 @@
     <h2>Add a new task</h2>
 
     <?php if(isset($_GET["error"])): ?>
-        Er is reeds een taak met deze naam.
+        <p>There is already a task with this name.</p>
     <?php endif; ?>
 
     <form action="" method="post">
@@ -83,9 +83,9 @@
         </div>
 
         <div class="form__field">
-            <input type="submit" name="toevoegen" value="Add task" class="btn-toevoegen">
+            <input type="submit" name="add" value="Add task" class="submit">
 
-            <a href="index.php" class="annuleren">Cancel</a>
+            <a href="index.php" class="cancel">Cancel</a>
         </div>
     </form>
     </div>

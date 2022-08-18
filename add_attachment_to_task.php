@@ -35,12 +35,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit task</title>
+    <title>Add attachment</title>
     <link rel="stylesheet" href="css/add_attachment.css?v=<?php echo time(); ?>">
 </head>
 <body>
     <?php include_once("nav.inc.php"); ?>
-    <h2>Edit this task</h1>
+    <h2>Edit task</h1>
 
     <form class="ms-4" action="" method="post" enctype="multipart/form-data">
         <div class="form__field">

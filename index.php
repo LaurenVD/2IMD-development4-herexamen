@@ -24,7 +24,7 @@
 
         <!-- lijst toevoegen -->
         <div class="task">
-            <a href="add_todo_list.php" class="add">Add a new list!</a>
+            <a href="add_todo_list.php" class="submit">Add a new list!</a>
         </div>
 
         <br>

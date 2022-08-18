@@ -45,7 +45,7 @@
             <!-- errors -->
             <?php if(isset($error)): ?>
                 <div class="form-error">
-                    <p><strong>Opgepast:</strong></p>
+                    <p><strong>Watch out:</strong></p>
                     <?php if(isset($error)) { echo $error; }?>
                 </div>
                 <br>

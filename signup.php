@@ -26,7 +26,7 @@ if (!empty($_POST)) {
     <link rel="stylesheet" href="css/signup.css?v=<?php echo time(); ?>">
 </head>
 <body>
-    <h2>Welcom to the To-Do application</h2>
+    <h2>Welcome to the To-Do application</h2>
     <div class="form-signup">
         <form action="" method="post">
 
@@ -47,16 +47,16 @@ if (!empty($_POST)) {
 
             <!-- wachtwoord -->
             <div class="form__field">
-                <input type="password" id="wachtwoord" name="password" placeholder="Wachtwoord">
+                <input type="password" id="wachtwoord" name="password" placeholder="Password">
             </div>
 
             <!-- btn -->
             <div class="form__field">
-                <input type="submit" value="Registreren" class="btn-registreren">
+                <input type="submit" value="Registreren" class="add">
             </div>
 
             <!-- login -->
-            <p class="login">Heb je al een account? <a href="login.php" target="_blank"><strong>Aanmelden</strong></a></p>
+            <p class="login">Do you already have an account? <a href="login.php" target="_blank"><strong>Sign in!</strong></a></p>
 
         </form>
     </div>

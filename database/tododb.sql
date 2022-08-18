@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 15 aug 2022 om 10:11
+-- Gegenereerd op: 18 aug 2022 om 17:38
 -- Serverversie: 10.4.24-MariaDB
 -- PHP-versie: 7.4.29
 
@@ -39,50 +39,9 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `text`, `userId`, `taskId`) VALUES
-(1, 'dfwgdg', 1, 5),
-(2, 'nog een', 1, 5),
-(3, 'qrgee', 1, 5),
-(4, 'dwfb', 1, 5),
-(5, 'dwfbsdef', 1, 5),
-(6, 'hyyy', 1, 5),
-(7, 'hyyyyyyy', 1, 5),
-(8, '<rg', 1, 5),
-(9, 'wrgvgw', 1, 5),
-(10, 'qderg', 1, 4),
-(11, 'dtsbrt', 1, 8),
-(12, 'hallo', 1, 27),
-(13, 'Eerste reactie', 1, 27),
-(14, 'Hallo', 1, 27),
-(15, 'Hallo', 1, 27),
-(16, 'opnieuw', 1, 27),
-(17, 'Ikke', 1, 27),
-(18, 'Nog eens', 1, 27),
-(19, 'Nog eens', 1, 27),
-(20, 'Nog eens', 1, 27),
-(21, 'Hallo', 1, 27),
-(22, '63456', 1, 27),
-(23, '468', 1, 27),
-(24, 'Test', 5, 41),
-(25, 'Hallo', 5, 41),
-(26, 'Test', 5, 41),
-(27, 'test', 5, 41),
-(28, 'test', 5, 41),
-(29, 'test', 5, 41),
-(30, 'Hallo', 5, 41),
-(31, 'test', 5, 41),
-(32, 'Hallo', 5, 41),
-(33, 'Ik', 5, 41),
-(34, 'Ik', 5, 41),
-(35, 'Nu', 5, 41),
-(36, 'Nu test', 5, 41),
-(37, 'Nog is', 5, 41),
-(38, 'nog een test', 5, 41),
-(39, 'Hii', 1, 28),
-(40, 'het werkt', 1, 44),
-(41, 'Hallo', 1, 28),
-(42, '888', 1, 27),
-(43, 'test', 1, 65),
-(44, 'hallo', 1, 45);
+(46, 'CSS is aangepast', 1, 28),
+(47, 'Hosting is nagekeken en werkt nog', 1, 45),
+(48, 'Zeep moet worden ingekocht', 1, 70);
 
 -- --------------------------------------------------------
 
@@ -106,16 +65,15 @@ CREATE TABLE `tasks` (
 --
 
 INSERT INTO `tasks` (`id`, `userId`, `listId`, `title`, `hour`, `date`, `done`, `attachment`) VALUES
-(28, 1, 11, 'sth', 3, '2022-08-29', 1, NULL),
-(29, 1, 12, 'test', 4, '2022-07-27', 0, NULL),
-(30, 1, 12, 'test', 4, '2022-07-27', 0, NULL),
-(40, 5, 0, 'test', 3, '2022-08-01', 0, NULL),
-(41, 5, 14, 'Test', 1, '2022-08-01', 0, NULL),
-(42, 5, 14, 'test2', 2, '2022-08-10', 0, NULL),
-(43, 5, 14, 'test', 1, '2022-08-03', 0, NULL),
-(44, 1, 16, 'task', 3, '2022-08-18', 0, NULL),
-(45, 1, 11, 'test', 5, '2022-08-10', 0, 'task_files/2d718d51-e297-406d-b8e1-e08dfe3afad4.jfif'),
-(65, 1, 17, 'test4', 3, '2022-08-26', 1, NULL);
+(28, 1, 11, 'Github', 3, '2022-08-22', 1, NULL),
+(45, 1, 11, 'Website hosting', 2, '2022-08-24', 0, ''),
+(69, 1, 12, 'Vaatwas leegmaken', 1, '2022-09-02', 0, NULL),
+(70, 1, 12, 'Dweilen', 3, '2022-09-01', 0, NULL),
+(71, 1, 13, 'Stal uitmesten', 1, '2022-08-23', 0, NULL),
+(72, 1, 13, 'Weide maken', 6, '2022-08-26', 0, NULL),
+(73, 1, 14, 'Rijden', 2, '2022-08-16', 1, NULL),
+(74, 1, 14, 'Longeren', 1, '2022-08-20', 0, NULL),
+(75, 1, 14, 'Wandelen', 2, '2022-08-30', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -135,15 +93,11 @@ CREATE TABLE `todo_lists` (
 --
 
 INSERT INTO `todo_lists` (`id`, `userId`, `title`, `description`) VALUES
-(11, 1, 'tesdt', 'fgqdger'),
-(12, 1, 'test2', 'tekst2'),
-(13, 1, 'test3', 'tekst3'),
-(14, 5, 'test4', 'tekst4'),
-(15, 5, 'test5', 'tekst5'),
-(16, 1, 'test5', 'tekst5'),
-(17, 1, 'test4', 'test4'),
-(18, 1, 'Kathleen', 'Kathleentje heeft nog werk'),
-(19, 1, 'lauren', 'test');
+(11, 1, 'Development', 'Alle opdrachten voor development 4, herexamen php.'),
+(12, 1, 'Huishoud taken', 'Alle zaken die in het huishouden moeten gebeuren.'),
+(13, 1, 'Stal', 'Alle klusjes op stal.'),
+(14, 1, 'Da Vinci', 'Trainingen die met Da Vinci (paard) moeten gebeuren.'),
+(15, 5, 'Hogeschool', 'Zaken die in orde moeten gebracht worden voor het nieuwe academiejaar.');
 
 -- --------------------------------------------------------
 
@@ -164,7 +118,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `is_admin`) VALUES
 (1, 'Laurenvdl', '$2y$12$pcJXQFbPsnlyfxphikLxzuMrYv2uHPtY4q/NU1PpUPDQliQ9Ax94O', 1),
-(5, 'Highness', '$2y$12$2de4HccWooEvz6s5nUQ/bOv7Pu9hbev2SvznBx8A0cSP6DQ3.e0Bi', 0);
+(5, 'Highness', '$2y$12$2de4HccWooEvz6s5nUQ/bOv7Pu9hbev2SvznBx8A0cSP6DQ3.e0Bi', 0),
+(8, 'DaVinci', '$2y$12$4MpSq3zbsPE/7j7a3mc/3O9QgHUCT2zJQOsXeUm51sohRVb2rAjDC', 0);
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -203,25 +158,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT voor een tabel `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT voor een tabel `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT voor een tabel `todo_lists`
 --
 ALTER TABLE `todo_lists`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT voor een tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Beperkingen voor geëxporteerde tabellen

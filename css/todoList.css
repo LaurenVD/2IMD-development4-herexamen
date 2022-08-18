@@ -6,39 +6,42 @@
 }
 
 h2 {
-    margin-left: 50px;
+    margin-left: 20px;
     margin-top: 50px;
     margin-bottom: 20px;
 }
 
-a {
-    margin-left: 20px;
+p {
+    margin-left: 30px;
 }
 
-p {
-    margin-left: 20px;
+a {
+    margin-left: 10px;
 }
 
 .description {
-    margin-left: 50px;
-    margin-bottom: 50px;
-}
-
-.date, #date {
-    padding-left: 70px;
+    margin-left: 20px;
 }
 
 #red {
     color: red;
 }
 
-.darkblue {
-    color: darkblue;
+.dateisPast {
+    color: red;
+}
+
+.workhour {
+    padding-left: -20px;
+}
+
+.sort {
+    margin-left: 20px;
 }
 
 .add {
     color: green;
-    margin-left: 50px;
+    margin-left: 20px;
     padding: 5px;
     border-style: solid;
     border-width: 1px;
@@ -47,5 +50,5 @@ p {
 
 .table {
     margin-top: 20px;
-    margin-left: 50px;
+    margin-left: 20px;
 }

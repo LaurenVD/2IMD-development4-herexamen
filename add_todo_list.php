@@ -52,17 +52,17 @@
             <?php endif; ?>
 
             <div class="form__field">
-                <input type="text" id="titel" name="title" placeholder="Title">
+                <input type="text" id="title" name="title" placeholder="Title">
             </div>
 
             <div class="form__field">
-                <textarea rows="4" cols="50" id="omschrijving" name="description" placeholder="Give a description for your list"></textarea>
+                <textarea rows="4" cols="50" id="description" name="description" placeholder="Give a description for your list"></textarea>
             </div>
 
             <div class="form__field">
-                <input type="submit" name="toevoegen" value="Add list" class="btn-toevoegen">
+                <input type="submit" name="submit" value="Add list" class="submit">
 
-                <a href="index.php" class="annuleren">Cancel</a>
+                <a href="index.php" class="cancel">Cancel</a>
             </div>
         </form>
     </div>

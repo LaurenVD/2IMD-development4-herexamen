@@ -6,7 +6,7 @@
 }
 
 h2 {
-    margin-left: 50px;
+    margin-left: 20px;
     margin-top: 50px;
     padding-bottom: 10px;
 }
@@ -23,13 +23,8 @@ td {
     padding-bottom: 10px;
 }
 
-.description {
-    margin-left: 50px;
-    margin-bottom: 50px;
-}
-
-.date, #date {
-    padding-left: 70px;
+th {
+    padding-bottom: 10px;
 }
 
 #red {
@@ -38,7 +33,7 @@ td {
 
 .add {
     color: green;
-    margin-left: 50px;
+    margin-left: 20px;
     padding: 5px;
     border-style: solid;
     border-width: 1px;
@@ -47,5 +42,5 @@ td {
 
 .table {
     margin-top: 20px;
-    margin-left: 50px;
+    margin-left: 20px;
 }

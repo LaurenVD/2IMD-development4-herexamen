@@ -20,6 +20,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit task</title>
+    <link rel="stylesheet" href="css/edit_task.css?v=<?php echo time(); ?>">
 </head>
 <body>
     <?php include_once("nav.inc.php"); ?>
@@ -27,11 +28,11 @@
 
     <form class="ms-4" action="" method="post">
         <div class="form__field">
-            <p>Fill in your deadline</p>
+            <p>Change your deadline</p>
             <input type="date" id="date" name="date" value="<?php echo $task['date'] ?>">
         </div>
 
-        <input class="btn btn-primary mt-3" type="submit" name="submit" value="Submit">
+        <input class="submit" type="submit" name="submit" value="Submit">
     </form>
 
         

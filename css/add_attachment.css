@@ -18,10 +18,11 @@ p {
     margin-left: 20px;
 }
 
-.btn-toevoegen {
+.submit {
     color: green;
+    margin-left: 20px;
 }
 
-.annuleren {
-    color: red;
+.upload_attachment {
+    margin-bottom: 20px;
 }

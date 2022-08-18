@@ -8,46 +8,25 @@
 h2 {
     margin-left: 20px;
     margin-top: 50px;
-    margin-bottom: 20px;
+    padding-bottom: 10px;
 }
 
 a {
     margin-left: 20px;
 }
 
-p {
-    margin-left: 20px;
-}
-
-.description {
-    margin-left: 20px;
-    margin-bottom: 50px;
-}
-
-.bold {
-    font-weight: 500;
+li {
+    margin-left: -20px;
+    margin-bottom: 5px;
 }
 
 .add {
-    display: inline-block;
+    color: green;
     margin-left: 20px;
-    margin-bottom: 10px;
     padding: 5px;
     border-style: solid;
     border-width: 1px;
     border-radius: 5px;
-}
-
-#red {
-    color: red;
-}
-
-#green {
-    color: green;
-}
-
-#submitComment {
-    color: green;
 }
 
 .table {
@@ -55,12 +34,6 @@ p {
     margin-left: 20px;
 }
 
-#commentText {
-    padding: 10px;
-    margin-bottom: 20px;
-    margin-top: 50px;
-    margin-left: 20px;
-    border-radius: 5px;
-    border-width: 1px;
-    width: 300px;
+.delete {
+    color: red;
 }

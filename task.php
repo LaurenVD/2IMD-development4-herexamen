@@ -27,16 +27,19 @@
         <p><?php echo htmlspecialchars($task['hour']); ?></p>
     </div>
 
+    <a href="edit_task.php?task=<?php echo $_GET["task"]; ?>" class="add">Edit task</a>
+    <br>
+    <a href="add_attachment_to_task.php?task=<?php echo $_GET["task"]; ?>" class="add" id="green">Add attachment</a>
+    <br>
     <a href="delete_task.php?task=<?php echo $_GET["task"]; ?>" class="add" id="red">Delete task</a>
-    <a href="edit_task.php?task=<?php echo $_GET["task"]; ?>" class="add" id="red">edit task</a>
-    <a href="add_attachment_to_task.php?task=<?php echo $_GET["task"]; ?>" class="add" id="green">add attachment</a>
-    <a href="delete_attachment.php?task=<?php echo $_GET["task"]; ?>" class="add" id="red">delete attachment</a>
-    <a href="delete_date.php?task=<?php echo $_GET["task"]; ?>" class="add" id="red">delete date</a>
+    <br>
+    <a href="delete_date.php?task=<?php echo $_GET["task"]; ?>" class="add" id="red">Delete date</a>
+    <br>
+    <a href="delete_attachment.php?task=<?php echo $_GET["task"]; ?>" class="add" id="red">Delete attachment</a>
+    <br>
 
-    <?php 
-    if(!is_null($task["attachment"])):
-    ?>
-    <a href="<?php echo $task["attachment"]?>" target="_blank" class="attachment">Bijlage</a>
+    <?php if(!is_null($task["attachment"])):?>
+    <a href="<?php echo $task["attachment"]?>" target="_blank" class="attachment">Attachment</a>
     <?php endif; ?>
 
     <div class="commentSection">

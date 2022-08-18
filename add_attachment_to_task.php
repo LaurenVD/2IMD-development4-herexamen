@@ -11,7 +11,6 @@
 
             if($task->getUserId() != $_SESSION["userId"]){
                 header("Location: index.php");
-                die;
             }
 
             $currentDirectory = getcwd();
@@ -37,6 +36,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit task</title>
+    <link rel="stylesheet" href="css/add_attachment.css?v=<?php echo time(); ?>">
 </head>
 <body>
     <?php include_once("nav.inc.php"); ?>
@@ -50,7 +50,7 @@
 
         <input type="hidden" name="taskId" value="<?php echo $taskId ;?>">
 
-        <input class="btn btn-primary mt-3" type="submit" name="submit" value="Submit">
+        <input class="submit" type="submit" name="submit" value="Submit">
     </form>
 </body>
 </html>

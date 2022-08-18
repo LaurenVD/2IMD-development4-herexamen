@@ -18,10 +18,15 @@ p {
     margin-left: 20px;
 }
 
-.btn-toevoegen {
-    color: green;
+#date {
+    margin-bottom: 20px;
 }
 
-.annuleren {
+.submit {
+    color: green;
+    margin-left: 20px;
+}
+
+.cancel {
     color: red;
 }

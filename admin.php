@@ -16,13 +16,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TODO</title>
-    <link rel="stylesheet" href="css/list.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="css/admin.css?v=<?php echo time(); ?>">
 </head>
 <body>
     <?php include_once("nav.inc.php"); ?>
 
     <div class="header">
-        <h2>Admin portaal</h2>
+        <h2>Admin page</h2>
     </div>
 
     <div class="content">
@@ -37,24 +37,24 @@
                 <?php foreach($admins as $admin): ?>
                     <tbody>
                         <tr>
-                            <td><?php echo $admin['username']; ?></td>
-                            <td><a href="delete_admin.php?adminId=<?php echo $admin["id"]; ?>" onClick="return confirm('Ben je zeker?');">Admin verwijderen</a></td>
+                            <td style="text-decoration: underline"><?php echo $admin['username']; ?></td>
+                            <td><a class="delete" href="delete_admin.php?adminId=<?php echo $admin["id"]; ?>" onClick="return confirm('Ben je zeker?');">Delete admin</a></td>
                         </tr>
                     </tbody>
                 <?php endforeach; ?>
             <?php endif; ?>
 
             <?php if(empty($admins)): ?>
-                <p>Geen admins gevonden</p>
+                <p>No admins found</p>
             <?php endif; ?>
         </table>
 
         <h2>Statistieken</h2>
         <ul>
-            <li>Aantal users: <?php echo Statistics::getNumberOfUsers();?></li>
-            <li>Aantal lijsten: <?php echo Statistics::getNumberOfLists();?></li>
-            <li>Gemiddeld aantal lijsten per gebruiker: <?php echo round(Statistics::getAverageNumberOfListsPerUser(), 1);?></li> <!-- 1 decimaal na de komma -->
-            <li>Gemiddeld aantal openstaande werkuren per gebruiker: <?php echo round(Statistics::getAverageSumOfOpenTaskHoursPerUser(), 1);?></li>
+            <li>Amount of users: <?php echo Statistics::getNumberOfUsers();?></li>
+            <li>Amount of lists: <?php echo Statistics::getNumberOfLists();?></li>
+            <li>Average number of lists per user: <?php echo round(Statistics::getAverageNumberOfListsPerUser(), 1);?></li> <!-- 1 decimaal na de komma -->
+            <li>Average sum of open task hours per user: <?php echo round(Statistics::getAverageSumOfOpenTaskHoursPerUser(), 1);?></li>
         </ul>
 
     </div>

@@ -18,10 +18,10 @@ p {
     margin-left: 20px;
 }
 
-.btn-toevoegen {
+.add {
     color: green;
 }
 
-.annuleren {
+.cancel {
     color: red;
 }

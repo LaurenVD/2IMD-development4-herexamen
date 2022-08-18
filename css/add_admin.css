@@ -7,33 +7,25 @@
 
 h2 {
     margin-left: 20px;
-    margin-top: 50px;
-    padding-bottom: 10px;
 }
 
-a {
+p {
+    font-weight: 500;
+}
+
+.form__field {
+    margin-top: 10px;
     margin-left: 20px;
 }
 
-li {
-    margin-left: -20px;
-    margin-bottom: 5px;
+#description {
+    width: 320px;
 }
 
 .submit {
     color: green;
-    margin-left: 20px;
-    padding: 5px;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 5px;
 }
 
-.table {
-    margin-top: 20px;
-    margin-left: 20px;
-}
-
-.delete {
+.cancel {
     color: red;
 }

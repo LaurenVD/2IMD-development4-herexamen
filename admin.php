@@ -57,8 +57,6 @@
             <li>Average sum of open task hours per user: <?php echo htmlspecialchars(round(Statistics::getAverageSumOfOpenTaskHoursPerUser(), 1));?></li>
         </ul>
 
-        <script>alert</script>
-
     </div>
 </body>
 </html>

@@ -6,7 +6,6 @@
 
     if($task["userId"] != $_SESSION["userId"]){
         header("Location: index.php");
-        die;
      }
     
      Task::setDateToNull($_GET["task"]);

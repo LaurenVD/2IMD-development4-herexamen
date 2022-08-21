@@ -29,7 +29,7 @@
     <form class="ms-4" action="" method="post">
         <div class="form__field">
             <p>Change your deadline</p>
-            <input type="date" id="date" name="date" value="<?php echo $task['date'] ?>">
+            <input type="date" id="date" name="date" value="<?php echo htmlspecialchars($task['date']) ?>">
         </div>
 
         <input class="submit" type="submit" name="submit" value="Submit">

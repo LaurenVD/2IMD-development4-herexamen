@@ -6,7 +6,6 @@
 
     if($list["userId"] != $_SESSION["userId"]){
         header("Location: index.php");
-        die;
      }
     
     Task::deleteTask($_GET["task"]);

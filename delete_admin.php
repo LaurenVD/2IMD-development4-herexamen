@@ -4,7 +4,6 @@
 
     if($_SESSION['is_admin'] === false){
         header("Location: index.php");
-        die;
      }
 
     if(!empty($_GET)) {

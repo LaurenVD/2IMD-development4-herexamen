@@ -51,11 +51,13 @@
 
         <h2>Statistics</h2>
         <ul>
-            <li>Amount of users: <?php echo Statistics::getNumberOfUsers();?></li>
-            <li>Amount of lists: <?php echo Statistics::getNumberOfLists();?></li>
-            <li>Average number of lists per user: <?php echo round(Statistics::getAverageNumberOfListsPerUser(), 1);?></li> <!-- 1 decimaal na de komma -->
-            <li>Average sum of open task hours per user: <?php echo round(Statistics::getAverageSumOfOpenTaskHoursPerUser(), 1);?></li>
+            <li>Amount of users: <?php echo htmlspecialchars(Statistics::getNumberOfUsers());?></li>
+            <li>Amount of lists: <?php echo htmlspecialchars(Statistics::getNumberOfLists());?></li>
+            <li>Average number of lists per user: <?php echo htmlspecialchars(round(Statistics::getAverageNumberOfListsPerUser(), 1));?></li> <!-- 1 decimaal na de komma -->
+            <li>Average sum of open task hours per user: <?php echo htmlspecialchars(round(Statistics::getAverageSumOfOpenTaskHoursPerUser(), 1));?></li>
         </ul>
+
+        <script>alert</script>
 
     </div>
 </body>

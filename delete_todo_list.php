@@ -6,7 +6,6 @@
     
     if($todoList["userId"] != $_SESSION["userId"]){
         header("Location: index.php");
-        die;
      }
 
     TodoList::deleteList($_GET["list"]);

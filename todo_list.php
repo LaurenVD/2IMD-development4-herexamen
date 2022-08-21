@@ -58,8 +58,8 @@
                             <td><a class="doneBtnAnchor" data-task-id="<?php echo $task['id'] ?>" href=""><?php if($task["done"] == 1):?><img src="./images/doneblue.svg" alt=""><?php else:?><img src="./images/donegrey.svg" alt=""><?php endif;?></a></td>
                             <td style="text-decoration: underline"><a href="task.php?task=<?php echo $task["id"]; ?>" class="btn"><?php echo htmlspecialchars($task['title']); ?></a></td>
                             <td><p class="date<?php if(Task::getIsPast($task['date']) == 1): ?>isPast <?php endif; ?>"><?php echo htmlspecialchars($task['date']); ?></p></td>
-                            <td><p class="date<?php if(Task::getIsPast($task['date']) == 1): ?>isPast <?php endif; ?>"> <?php echo Task::getDaysRemaining($task['date']); ?></p></td>
-                            <td><p class="workhour"> <?php echo $task['hour']; ?></p></td>
+                            <td><p class="date<?php if(Task::getIsPast($task['date']) == 1): ?>isPast <?php endif; ?>"> <?php echo htmlspecialchars(Task::getDaysRemaining($task['date'])); ?></p></td>
+                            <td><p class="workhour"> <?php echo htmlspecialchars($task['hour']); ?></p></td>
                         </tr>
                     </tbody>
                 <?php endforeach; ?>

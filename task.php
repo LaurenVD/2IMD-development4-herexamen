@@ -54,8 +54,8 @@
                     <?php foreach($comments as $comment): ?>
                         <?php $commentUser = User::getUserById($comment['userId']) ?>
                             <li>
-                                <h4 class="detailsText"><?php echo $commentUser['username'] ?> reacted:</h4>
-                                <p><?php echo $comment['text'] ?></p>
+                                <h4 class="detailsText"><?php echo htmlspecialchars($commentUser['username']) ?> reacted:</h4>
+                                <p><?php echo htmlspecialchars($comment['text']) ?></p>
                             </li>
                     <?php endforeach; ?>
                 </ul>

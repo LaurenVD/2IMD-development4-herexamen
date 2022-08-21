@@ -40,7 +40,7 @@
                 <?php foreach($todoLists as $todoList): ?>
                     <tbody>
                         <tr>
-                            <td style="text-decoration: underline"><a href="todo_list.php?list=<?php echo $todoList["id"]; ?>" class="btn"><?php echo htmlspecialchars($todoList['title']); ?></a></td>
+                            <td style="text-decoration: underline"><a href="todo_list.php?list=<?php echo htmlspecialchars($todoList["id"]); ?>" class="btn"><?php echo htmlspecialchars($todoList['title']); ?></a></td>
                         </tr>
                     </tbody>
                 <?php endforeach; ?>

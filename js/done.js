@@ -1,3 +1,5 @@
+//bron: boek javascript & jquery door Jon Duckett
+
 document.querySelectorAll('.doneBtnAnchor').forEach(item => {
     item.addEventListener("click", function (e) {
         e.preventDefault();

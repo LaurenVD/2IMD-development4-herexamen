@@ -4,7 +4,7 @@
 
     $taskId = $_GET['task'];
 
-    // add a file
+    // add a file, bron: https://blog.filestack.com/thoughts-and-knowledge/php-file-upload/#2_The_PHP_File_Upload_Script
     if(isset($_POST['submit'])){
         if(isset($_FILES['upload_attachment'])) {
             $task = Task::getTaskById($_POST["taskId"]);

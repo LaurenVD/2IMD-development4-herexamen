@@ -1,3 +1,5 @@
+////bron: boek javascript & jquery door Jon Duckett
+
 document.querySelector("#submitComment").addEventListener("click", function(event){
     event.preventDefault();
     const taskId = document.querySelector("#submitComment").dataset.taskid;

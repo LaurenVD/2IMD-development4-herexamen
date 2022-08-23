@@ -32,7 +32,7 @@
             }
         }
 
-        // password
+        // password bron: https://www.php.net/manual/en/function.password-hash.php
         public function setPassword($password) {
             self::checkPassword($password);
 
